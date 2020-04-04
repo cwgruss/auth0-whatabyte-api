@@ -13,6 +13,8 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import { menuItemsRouter } from './routes/menu-items/menu-items.router';
+import { errorHandler } from './middleware/errors/error-handler.middleware';
+import { notFoundHandler } from './middleware/errors/resourceNotFound.middleware';
 
 // Load any environmental variables from .env
 dotenv.config();
@@ -37,6 +39,10 @@ app.use(express.json());
 
 /** Routes */
 app.use('/items', menuItemsRouter);
+
+app.use(errorHandler);
+app.use(notFoundHandler);
+
 
 // ########################################
 // # Server Activation
