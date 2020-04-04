@@ -12,6 +12,7 @@ import * as dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import { menuItemsRouter } from './routes/menu-items/menu-items.router';
 
 // Load any environmental variables from .env
 dotenv.config();
@@ -33,6 +34,9 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+
+/** Routes */
+app.use('/items', menuItemsRouter);
 
 // ########################################
 // # Server Activation
