@@ -8,7 +8,6 @@
 // ########################################
 // # Required External Modules
 // ########################################
-import * as dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -17,7 +16,7 @@ import { errorHandler } from './middleware/errors/error-handler.middleware';
 import { notFoundHandler } from './middleware/errors/resourceNotFound.middleware';
 
 // Load any environmental variables from .env
-dotenv.config();
+// dotenv.config();
 
 // ########################################
 // # Application Variables
