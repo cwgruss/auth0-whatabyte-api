@@ -7,6 +7,7 @@ import express, { Request, Response } from 'express';
 import * as MenuItemService from '../../core/menu-item/menu-items.service';
 import { MenuItems } from '../../core/menu-item/menu-items.interface';
 import { MenuItem } from '../../core/menu-item/menu-item.interface';
+import { checkJwt } from '../../middleware/authorization/auth0.middleware';
 
 /** Router Definition */
 export const menuItemsRouter = express.Router();
@@ -37,6 +38,11 @@ menuItemsRouter.get('/:id', async(req: Request, res: Response) => {
         res.status(404).send(e.message);
     }
 });
+
+
+// # Authorization JWT
+menuItemsRouter.use(checkJwt);
+
 
 // ** POST items/
 // ******************************************
