@@ -62,9 +62,10 @@ export const find = async(id: number): Promise<MenuItem> => {
 export const create = async(newItem: MenuItem): Promise<MenuItems> => {
     const id = new Date().valueOf();
     items[id] = {
-        ...newItem,
-        id
+        id,
+        ...newItem
     };
+    console.log(`Creating item ${id} with name ${newItem.name}`);
     return items;
 };
 
